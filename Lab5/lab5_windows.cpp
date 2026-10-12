@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-// Структура аргументів
+
 typedef struct {
     int thread_num;
     DWORD_PTR cpu_core_mask; 
@@ -101,7 +101,7 @@ DWORD WINAPI thread_func_memory(LPVOID lpParam) {
 }
 
 int main() {
-    // Встановлюємо UTF-8 для коректного відображення української мови в консолі Windows
+    
     SetConsoleOutputCP(CP_UTF8);
 
     printf("=== Тестування задачі, що навантажує процесор (CPU-bound) ===\n");
@@ -109,7 +109,7 @@ int main() {
     long end_cpu = 3000000;
     long mid_cpu = (start_cpu + end_cpu) / 2;
 
-    // Маска ядра 1 = 1-ше ядро, маска 2 = 2-ге ядро, маска 3 = 1 та 2 ядра.
+
     ThreadData t1_cpu = { 1, 1, THREAD_PRIORITY_HIGHEST, start_cpu, mid_cpu, NULL, 0, 0, 0 };
     ThreadData t2_cpu = { 2, 2, THREAD_PRIORITY_LOWEST, mid_cpu + 1, end_cpu, NULL, 0, 0, 0 };
 
