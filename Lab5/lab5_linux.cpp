@@ -124,8 +124,8 @@ int main(int argc, char *argv[]) {
 
     ThreadData tdata_cpu[2];
   
-    tdata_cpu[0] = { 1, 0, -10, start_cpu, mid_cpu, NULL, 0, 0, 0 };
-    tdata_cpu[1] = { 2, 1, 10, mid_cpu + 1, end_cpu, NULL, 0, 0, 0 };
+    tdata_cpu[0] = { 1, 0, 0, start_cpu, mid_cpu, NULL, 0, 0, 0 };
+    tdata_cpu[1] = { 2, 2, 0, mid_cpu + 1, end_cpu, NULL, 0, 0, 0 };
 
     pthread_t threads[NUM_THREADS];
     for (int i=0; i<2; i++) pthread_create(&threads[i], NULL, thread_func_cpu, &tdata_cpu[i]);
@@ -147,8 +147,8 @@ int main(int argc, char *argv[]) {
 
     ThreadData tdata_mem[2];
   
-    tdata_mem[0] = { 1, 0, -10, start_mem, mid_mem - 1, items, 0, 0, 0 };
-    tdata_mem[1] = { 2, 1, -10, mid_mem, end_mem - 1, items, 0, 0, 0 };
+    tdata_mem[0] = { 1, 0, 0, start_mem, mid_mem - 1, items, 0, 0, 0 };
+    tdata_mem[1] = { 2, 2, 0, mid_mem, end_mem - 1, items, 0, 0, 0 };
 
     for (int i=0; i<2; i++) pthread_create(&threads[i], NULL, thread_func_memory, &tdata_mem[i]);
     for (int i=0; i<2; i++) pthread_join(threads[i], NULL);
